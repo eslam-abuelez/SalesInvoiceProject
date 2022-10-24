@@ -1,18 +1,40 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class InvoiceHeader {
 
-    int number;
-    Date date;
-    String name;
+  private   int number;
+    private Date date;
+    private String name;
+
+
+    private ArrayList<InvoiceLine> lines;
+
+    public InvoiceHeader() {
+
+    }
+
+    public ArrayList<InvoiceLine> getLines() {
+        return lines;
+    }
+
 
     public InvoiceHeader(int number, Date date, String name) {
         this.number = number;
         this.date = date;
         this.name = name;
     }
+
+    public double getTotal(){
+        double total = 0.0;
+        for (InvoiceLine line : lines){
+        total += line.getTotal();
+        }
+    return total;
+    }
+
 
     public int getNumber() {
         return number;
