@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Menu extends JFrame implements ActionListener {
     private JMenuBar menuBar;
     private JMenuItem  fileMenu;
-    private JMenuItem  loadFile;
+    private JMenuItem  load;
     private JMenuItem saveFile;
     private AbstractButton ta;
 
@@ -23,15 +23,15 @@ public class Menu extends JFrame implements ActionListener {
 
         super("Menu Details");
         menuBar = new JMenuBar();
-        loadFile = new JMenuItem("upload File");
+        load = new JMenuItem("upload File");
         saveFile = new JMenuItem("Save File");
         fileMenu = new JMenu("File");
 
-        loadFile.addActionListener(this);
-        loadFile.setActionCommand("upload File");
+        load.addActionListener(this);
+        load.setActionCommand("upload File");
         saveFile.addActionListener(this);
         saveFile.setActionCommand("save file");
-        fileMenu.add(loadFile);
+        fileMenu.add(load);
 
         fileMenu.add(saveFile);
         menuBar.add(fileMenu);
@@ -61,7 +61,7 @@ public class Menu extends JFrame implements ActionListener {
 
 
 
-    void loadFile(){
+    void load(){
         JFileChooser fc = new JFileChooser();
         int result=  fc.showOpenDialog(this);
         if (result== JFileChooser.APPROVE_OPTION) {
