@@ -4,11 +4,17 @@
  */
 package View;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  *
  * @author Islam-Abdelrahman
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class NewJFrame extends javax.swing.JFrame  {
 
     /**
      * Creates new form NewJFrame
@@ -274,5 +280,46 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
+    private AbstractButton ta;
     // End of variables declaration//GEN-END:variables
+
+
+    //@Override
+    public void actionPerformed(ActionEvent e) {
+        switch (e.getActionCommand()){
+            case  "load file" :
+
+                break;
+
+            case "save file":
+
+                break;
+        }
+    }
+    public void load(){
+        JFileChooser fc = new JFileChooser();
+        int result=  fc.showOpenDialog(this);
+        if (result== JFileChooser.APPROVE_OPTION) {
+            String path = fc.getSelectedFile().getPath();
+            FileInputStream fis = null;
+            try {
+                fis = new FileInputStream(path);
+                int size = fis.available();
+                byte[] b = new byte[size];
+                fis.read(b);
+                ta.setText(new String(b));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }catch (IOException e){
+
+                e.printStackTrace();
+            }finally {
+                try{ fis.close();}catch (IOException e){
+                }
+
+
+            }
+        }
+
+}
 }

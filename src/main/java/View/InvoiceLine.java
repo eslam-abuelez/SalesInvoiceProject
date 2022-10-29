@@ -1,6 +1,8 @@
-package Model;
+package View;
 
-public class InvoiceLine {
+import javax.swing.table.TableModel;
+
+public abstract class InvoiceLine implements TableModel {
 
     String name ;
     int count;

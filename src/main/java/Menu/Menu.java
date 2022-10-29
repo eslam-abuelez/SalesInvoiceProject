@@ -1,7 +1,7 @@
 package Menu;
 
-import Model.InvoiceHeader;
-import Model.InvoiceLine;
+import View.InvoiceHeader;
+import View.InvoiceLine;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

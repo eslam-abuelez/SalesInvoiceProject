@@ -1,9 +1,10 @@
-package Model;
+package View;
 
+import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class InvoiceHeader {
+public  class InvoiceHeader extends AbstractTableModel     {
 
   private   int number;
     private Date date;
@@ -67,5 +68,20 @@ public class InvoiceHeader {
                 ", date=" + date +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public int getRowCount() {
+        return 0;
+    }
+
+    @Override
+    public int getColumnCount() {
+        return 0;
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        return null;
     }
 }
