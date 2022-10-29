@@ -13,6 +13,6 @@ public class OpenBrowser {
 
         WebDriver driver = new ChromeDriver();
         //navigate to the project in github
-       // driver.navigate().to("https://github.com/eslam-abuelez/SalesInvoiceProject.git");
+       driver.navigate().to("https://github.com/eslam-abuelez/SalesInvoiceProject.git");
     }
 }
