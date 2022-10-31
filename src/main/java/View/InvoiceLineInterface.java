@@ -1,5 +1,7 @@
 package View;
 
+import javax.swing.*;
+
 public interface InvoiceLineInterface {
     String getName();
 
@@ -13,7 +15,7 @@ public interface InvoiceLineInterface {
 
     void setTotal(double total);
 
-    InvoiceHeader getInv();
+    JTable getInv();
 
     void setInv(InvoiceHeader inv);
 

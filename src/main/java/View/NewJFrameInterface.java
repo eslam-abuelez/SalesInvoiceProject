@@ -8,4 +8,6 @@ public interface NewJFrameInterface {
     void ActionPerformed(ActionEvent evt);
 
     void jMenuItem1();
+
+    void load();
 }

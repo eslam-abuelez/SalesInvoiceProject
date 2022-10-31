@@ -58,6 +58,7 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener, New
 
         LineTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -112,14 +113,14 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener, New
 
         deleteInvoicebtn.setText("Delete Invoice");
 
-        SaveBtn.setText("Save");
+        SaveBtn.setText("Create Item");
         SaveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SaveBtnActionPerformed(evt);
             }
         });
 
-        CancelBtn.setText("Cancel");
+        CancelBtn.setText("Delete Item");
 
         jMenu1.setText("File");
 
@@ -219,17 +220,10 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener, New
     @Override
 public void ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-    switch (evt.getActionCommand()){
-        case "loadFile":
-            jMenuItem1();
-
-            break;
-
-        case "saveFile":
-            jMenuItem2();
-
-            break;
-    }
+        switch (evt.getActionCommand()) {
+            case "loadFile" -> jMenuItem1();
+            case "saveFile" -> jMenuItem2();
+        }
 
     }
     @Override
@@ -238,28 +232,18 @@ public void ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenuItem1Action
         int result =fc.showOpenDialog(this);
         if(result==JFileChooser.APPROVE_OPTION){
           String path =   fc.getSelectedFile().getPath();
-            FileInputStream fis = null;
-          try {
-               fis = new FileInputStream(path);
-              int size = fis.available();
-              byte[] b = new byte[size];
-              fis.read(b);
-              AbstractButton ta = null;
-              ta.setText(new String(b));
+            try (FileInputStream fis = new FileInputStream(path)) {
+                int size = fis.available();
+                byte[] b = new byte[size];
+                fis.read(b);
+                AbstractButton ta = null;
+                ta.setText(new String(b));
 
 
-          } catch (FileNotFoundException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
-          }
-          catch (IOException e) {
-              e.printStackTrace();
-          }finally {
-              try {
-                  fis.close();
-              } catch (IOException e) {
-              }
-          }
-          }
+            }
+        }
         }
     private void jMenuItem2(){
 
@@ -342,7 +326,7 @@ public void ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenuItem1Action
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
             case  "load file" :
-
+                load();
                 break;
 
             case "save file":
@@ -350,7 +334,8 @@ public void ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenuItem1Action
                 break;
         }
     }
-    public void load(AbstractButton ta){
+    @Override
+    public void load(){
         JFileChooser fc = new JFileChooser();
         int result=  fc.showOpenDialog(this);
         if (result== JFileChooser.APPROVE_OPTION) {

@@ -41,7 +41,8 @@ public abstract class InvoiceLine implements TableModel {
     public void setInv(InvoiceHeader inv) {
         this.inv = inv;
     }
-}
 
+
+    }
 
 

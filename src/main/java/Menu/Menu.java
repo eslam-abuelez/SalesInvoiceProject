@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Menu extends JFrame implements ActionListener {
     private JMenuBar menuBar;
-    private JMenuItem  fileMenu;
+    private JMenuItem fileMenu;
 
     public JMenuItem getLoad() {
         return load;
@@ -23,12 +23,12 @@ public class Menu extends JFrame implements ActionListener {
         this.load = load;
     }
 
-    private JMenuItem  load;
+    private JMenuItem load;
     private JMenuItem saveFile;
     private AbstractButton ta;
 
 
-    public Menu(){
+    public Menu() {
 
         super("Menu Details");
         menuBar = new JMenuBar();
@@ -46,19 +46,19 @@ public class Menu extends JFrame implements ActionListener {
         menuBar.add(fileMenu);
 
 
-
         setJMenuBar(menuBar);
         setSize(400, 300);
-        setLocation(200,200);
+        setLocation(200, 200);
 
     }
+
     InvoiceHeader invoiceHeader = new InvoiceHeader();
     ArrayList<InvoiceLine> arrayList = new ArrayList<>();
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()){
-            case  "upload file" :
+        switch (e.getActionCommand()) {
+            case "upload file":
 
                 break;
 
@@ -69,11 +69,10 @@ public class Menu extends JFrame implements ActionListener {
     }
 
 
-
-    void load(){
+    void load() {
         JFileChooser fc = new JFileChooser();
-        int result=  fc.showOpenDialog(this);
-        if (result== JFileChooser.APPROVE_OPTION) {
+        int result = fc.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
             String path = fc.getSelectedFile().getPath();
             FileInputStream fis = null;
             try {
@@ -84,11 +83,13 @@ public class Menu extends JFrame implements ActionListener {
                 ta.setText(new String(b));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-            }catch (IOException e){
+            } catch (IOException e) {
 
                 e.printStackTrace();
-            }finally {
-                try{ fis.close();}catch (IOException e){
+            } finally {
+                try {
+                    fis.close();
+                } catch (IOException e) {
                 }
 
 
@@ -99,8 +100,11 @@ public class Menu extends JFrame implements ActionListener {
         //}
 
 
-        //public static void main(String[] args) {
-        //new MenuTest().setVisible(true);
-        // }
-    }}
+    }
 
+    public static void main(String[] args) {
+        new Menu ().setVisible(true);
+
+    }
+
+}

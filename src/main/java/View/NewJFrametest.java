@@ -5,17 +5,20 @@
 package View;
 
 import javax.swing.*;
+import javax.swing.event.TableModelListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
  * @author Islam-Abdelrahman
  */
-public class NewJFrametest extends JFrame implements ActionListener, NewJFrameInterface {
+public class NewJFrametest extends JFrame implements ActionListener, NewJFrameInterface,InvoiceLineInterface, InvoiceHeaderInterface {
 
     /**
      * Creates new form NewJFrame
@@ -57,15 +60,7 @@ public class NewJFrametest extends JFrame implements ActionListener, NewJFrameIn
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         LineTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                    "Invoice Number", "Customer Name", "Invoice Date", "Invoice Total"
-            }
+
         ));
         LineTable.setShowGrid(true);
         jScrollPane1.setViewportView(LineTable);
@@ -94,8 +89,9 @@ public class NewJFrametest extends JFrame implements ActionListener, NewJFrameIn
                 {null, null, null, null},
                 {null, null, null, null}
             },
+
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                    "Invoice Number", "Item Name", "Item Price", "Count"
             }
         ));
         jTable2.setShowGrid(true);
@@ -119,7 +115,7 @@ public class NewJFrametest extends JFrame implements ActionListener, NewJFrameIn
             }
         });
 
-        CancelBtn.setText("Cancel");
+        CancelBtn.setText("Delete Invoice");
 
         jMenu1.setText("File");
 
@@ -261,6 +257,12 @@ public void ActionPerformed(ActionEvent e) {//GEN-FIRST:event_jMenuItem1ActionPe
           }
           }
         }
+
+    @Override
+    public void load() {
+
+    }
+
     private void jMenuItem2(){
 
     }
@@ -377,4 +379,106 @@ public void ActionPerformed(ActionEvent e) {//GEN-FIRST:event_jMenuItem1ActionPe
         }
 
 }
+
+    @Override
+    public int getCount() {
+        return 0;
+    }
+
+    @Override
+    public void setCount(int count) {
+
+    }
+
+    @Override
+    public ArrayList<InvoiceLine> getLines() {
+        return null;
+    }
+
+    @Override
+    public double getTotal() {
+        return getTotal();
+    }
+
+    @Override
+    public int getNumber() {
+        return 0;
+    }
+
+    @Override
+    public void setNumber(int number) {
+
+    }
+
+    @Override
+    public Date getDate() {
+        return null;
+    }
+
+    @Override
+    public void setDate(Date date) {
+
+    }
+
+    @Override
+    public int getRowCount() {
+        return 0;
+    }
+
+    @Override
+    public int getColumnCount() {
+        return 0;
+    }
+
+    @Override
+    public String getColumnName(int columnIndex) {
+        return null;
+    }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        return null;
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return false;
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        return null;
+    }
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+
+    }
+
+    @Override
+    public void addTableModelListener(TableModelListener l) {
+
+    }
+
+    @Override
+    public void removeTableModelListener(TableModelListener l) {
+
+    }
+
+    @Override
+    public void setTotal(double total) {
+
+    }
+
+    @Override
+    public JTable getInv() {
+        return null;
+    }
+
+
+
+    @Override
+    public void setInv(InvoiceHeader inv) {
+
+    }
 }
