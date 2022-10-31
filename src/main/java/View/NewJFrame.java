@@ -6,6 +6,7 @@ package View;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.io.IOException;
  *
  * @author Islam-Abdelrahman
  */
-public class NewJFrame extends javax.swing.JFrame  {
+public class NewJFrame extends javax.swing.JFrame implements ActionListener, NewJFrameInterface {
 
     /**
      * Creates new form NewJFrame
@@ -63,7 +64,7 @@ public class NewJFrame extends javax.swing.JFrame  {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                    "Invoice Number", "Customer Name", "Invoice Date", "Invoice Total"
             }
         ));
         LineTable.setShowGrid(true);
@@ -123,15 +124,16 @@ public class NewJFrame extends javax.swing.JFrame  {
         jMenu1.setText("File");
 
         jMenuItem1.setText("Load");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
+
         jMenu1.add(jMenuItem1);
+        jMenuItem1.addActionListener(this);//make this menu item reads file
+        jMenuItem1.setActionCommand("loadFile");
+
 
         jMenuItem2.setText("Save");
         jMenu1.add(jMenuItem2);
+        jMenuItem2.addActionListener(this);//make this menu item reads file
+        jMenuItem1.setActionCommand("saveFile");
 
         jMenuBar1.add(jMenu1);
 
@@ -212,9 +214,56 @@ public class NewJFrame extends javax.swing.JFrame  {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+
+
+    @Override
+public void ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    switch (evt.getActionCommand()){
+        case "loadFile":
+            jMenuItem1();
+
+            break;
+
+        case "saveFile":
+            jMenuItem2();
+
+            break;
+    }
+
+    }
+    @Override
+    public void jMenuItem1(){
+        JFileChooser fc = new JFileChooser();
+        int result =fc.showOpenDialog(this);
+        if(result==JFileChooser.APPROVE_OPTION){
+          String path =   fc.getSelectedFile().getPath();
+            FileInputStream fis = null;
+          try {
+               fis = new FileInputStream(path);
+              int size = fis.available();
+              byte[] b = new byte[size];
+              fis.read(b);
+              AbstractButton ta = null;
+              ta.setText(new String(b));
+
+
+          } catch (FileNotFoundException e) {
+                e.printStackTrace();
+          }
+          catch (IOException e) {
+              e.printStackTrace();
+          }finally {
+              try {
+                  fis.close();
+              } catch (IOException e) {
+              }
+          }
+          }
+        }
+    private void jMenuItem2(){
+
+    }
 
     private void createItemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createItemBtnActionPerformed
         // TODO add your handling code here:
@@ -228,6 +277,11 @@ public class NewJFrame extends javax.swing.JFrame  {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
+
+
+
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -280,7 +334,7 @@ public class NewJFrame extends javax.swing.JFrame  {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
-    private AbstractButton ta;
+    JTextArea ta;
     // End of variables declaration//GEN-END:variables
 
 
@@ -296,7 +350,7 @@ public class NewJFrame extends javax.swing.JFrame  {
                 break;
         }
     }
-    public void load(){
+    public void load(AbstractButton ta){
         JFileChooser fc = new JFileChooser();
         int result=  fc.showOpenDialog(this);
         if (result== JFileChooser.APPROVE_OPTION) {

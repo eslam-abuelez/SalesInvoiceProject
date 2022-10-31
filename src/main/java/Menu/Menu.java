@@ -14,6 +14,15 @@ import java.util.ArrayList;
 public class Menu extends JFrame implements ActionListener {
     private JMenuBar menuBar;
     private JMenuItem  fileMenu;
+
+    public JMenuItem getLoad() {
+        return load;
+    }
+
+    public void setLoad(JMenuItem load) {
+        this.load = load;
+    }
+
     private JMenuItem  load;
     private JMenuItem saveFile;
     private AbstractButton ta;

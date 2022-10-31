@@ -1,17 +1,41 @@
 package Controller;
 
-import View.InvoiceHeader;
 import View.NewJFrame;
 
-public class Sig {
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+
+public class Sig extends JFrame implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
     public static void main(String[] args) {
 
         NewJFrame frame = new NewJFrame();
-        frame.setVisible(true);
-        InvoiceHeader invoiceHeader = new InvoiceHeader();
-        //InvoiceLine invoiceLine = new InvoiceLine();
+       frame.setVisible(true);
+       // InvoiceHeader invoiceHeader = new InvoiceHeader();
 
-        //load.addActionListener(this);
-        //load.setActionCommand("upload File");
-    }
+        //InvoiceLine invoiceLine = new TableModelListener();
+        // {
+
+        }
+
+
 }
+
+
+    //load.addActionListener(this);
+        //load.setActionCommand("upload File");
+
+
+
+
+
+
+
+
