@@ -9,5 +9,7 @@ public interface NewJFrameInterface {
 
     void jMenuItem1();
 
-    void load();
+    String load();
+
+    String setLoad();
 }

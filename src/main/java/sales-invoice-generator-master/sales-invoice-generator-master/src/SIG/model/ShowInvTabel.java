@@ -1,14 +1,19 @@
-package Model;
+
+
+
+//model of invoices table 
+
+package SIG.model;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
-public class Invoice extends AbstractTableModel {
+public class ShowInvTabel extends AbstractTableModel {
 
     private String[] colums = {"Num", "Date", "Customer", "Total"};
-    private ArrayList<SIG.model.sigHeader> invoices;
+    private ArrayList<sigHeader> invoices;
 
-    public Invoice(ArrayList<SIG.model.sigHeader> invoices) {
+    public ShowInvTabel(ArrayList<sigHeader> invoices) {
         this.invoices = invoices;
     }
 
@@ -24,23 +29,23 @@ public class Invoice extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-
-        SIG.model.sigHeader invoice = invoices.get(rowIndex);
+        
+        sigHeader invoice = invoices.get(rowIndex);
         switch(columnIndex){
             case 0:
                 return invoice.getNum();
-
+                
             case 1:
                 return invoice.getDate();
-
+                
             case 2:
                 return invoice.getName();
-
-            case 3:
+                
+            case 3: 
                 return invoice.getTotalInvoice();
-
+            
         }
-
+        
         return null;
     }
 
@@ -50,5 +55,3 @@ public class Invoice extends AbstractTableModel {
     }
 
 }
-
-

@@ -221,33 +221,25 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener, New
 public void ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         switch (evt.getActionCommand()) {
-            case "loadFile" -> jMenuItem1();
+            case "loadFile" -> setLoad();
             case "saveFile" -> jMenuItem2();
         }
 
     }
-    @Override
-    public void jMenuItem1(){
-        JFileChooser fc = new JFileChooser();
-        int result =fc.showOpenDialog(this);
-        if(result==JFileChooser.APPROVE_OPTION){
-          String path =   fc.getSelectedFile().getPath();
-            try (FileInputStream fis = new FileInputStream(path)) {
-                int size = fis.available();
-                byte[] b = new byte[size];
-                fis.read(b);
-                AbstractButton ta = null;
-                ta.setText(new String(b));
 
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        }
-    private void jMenuItem2(){
-
+    private void jMenuItem2() {
     }
+
+    @Override
+    public void jMenuItem1() {
+        setLoad();
+    }
+
+    @Override
+    public String load() {
+        return setLoad();
+    }
+
 
     private void createItemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createItemBtnActionPerformed
         // TODO add your handling code here:
@@ -326,7 +318,7 @@ public void ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenuItem1Action
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
             case  "load file" :
-                load();
+                setLoad();
                 break;
 
             case "save file":
@@ -334,8 +326,20 @@ public void ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenuItem1Action
                 break;
         }
     }
+
+
+
+    public String getLoad() {
+        return load;
+    }
+
+//    public void setLoad(String load) {
+//        this.load = load;
+//    }
+
+    String load  = this.load();
     @Override
-    public void load(){
+    public String setLoad(){
         JFileChooser fc = new JFileChooser();
         int result=  fc.showOpenDialog(this);
         if (result== JFileChooser.APPROVE_OPTION) {
@@ -360,5 +364,6 @@ public void ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenuItem1Action
             }
         }
 
-}
+        return null;
+    }
 }
