@@ -1,19 +1,20 @@
 
-package SIG.model;
+package Model;
 
+import view.InvoiceFrame;
+import view.InvoiceFrame;
+
+import javax.swing.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import javax.swing.JFileChooser;
-import SIG.view.InvoiceFrame;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import java.util.stream.Collectors;
 
 
 public class FileOperations {
@@ -112,7 +113,7 @@ public class FileOperations {
                     sigHeader invoice = new sigHeader(num, customerName, date);
                     invArray.add(invoice);
                     frame.getInvoices().add(invoice);
-                   
+
                 }
                 /*split each element in itemLine arrays that has the invoices from items file
                     then dipose ',' and save each string in another array of strings
@@ -230,8 +231,8 @@ public class FileOperations {
             }
             }
             else{
-                System.out.println("Wrong Lines File Format");
-                 JOptionPane.showMessageDialog(frame, "Wrong Lines File Format");   
+                System.out.println("Invalid File ");
+                 JOptionPane.showMessageDialog(frame, "Invalid File");
             }
         }while(true);
        

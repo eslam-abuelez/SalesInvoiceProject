@@ -1,13 +1,14 @@
 
-package SIG.controller;
+package controller;
 
-import SIG.model.ShowLineTabel;
-import SIG.model.sigHeader;
-import SIG.model.sigItem;
-import SIG.view.InvoiceFrame;
-import java.util.ArrayList;
+import Model.ShowLineTabel;
+import Model.sigHeader;
+import Model.sigItem;
+import view.InvoiceFrame;
+
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import java.util.ArrayList;
 
 
 public class TableAction implements ListSelectionListener{

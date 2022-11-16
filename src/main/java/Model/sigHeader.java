@@ -1,8 +1,8 @@
 
 
 
-//class of sigHeader which store in it the invoice item lines, customer name, invoice number and date
-package SIG.model;
+//class of SigHeader which store in it the invoice item lines, customer name, invoice number and date
+package Model;
 
 import java.util.ArrayList;
  
@@ -66,10 +66,11 @@ public class sigHeader {
 
     @Override
     public String toString() {
-        return "sigHeader{" + "num=" + num + ", date=" + date + ", name=" + name  + ", items=" + items + '}';
+        return "SigHeader{" + "num=" + num + ", date=" + date + ", name=" + name  + ", items=" + items + '}';
     }
     public double getTotal(){
         double total=0;
+
         for(sigItem item: getItems()){
             total= total+ item.getTotal();
         }

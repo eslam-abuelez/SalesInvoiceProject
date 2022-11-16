@@ -2,10 +2,10 @@
 
 //model of item lines table 
 
-package SIG.model;
+package Model;
 
-import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
+import java.util.ArrayList;
 
 
 public class ShowLineTabel extends AbstractTableModel {

@@ -3,7 +3,7 @@
 //class of sigItem which store in item name, unit price, quantity and links the invoice with it 
 
 
-package SIG.model;
+package Model;
 
 public class sigItem {
     private sigHeader invoice;

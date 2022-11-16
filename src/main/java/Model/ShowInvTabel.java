@@ -3,7 +3,7 @@
 
 //model of invoices table 
 
-package SIG.model;
+package Model;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;

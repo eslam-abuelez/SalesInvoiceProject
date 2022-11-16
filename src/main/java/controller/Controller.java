@@ -1,19 +1,19 @@
-package SIG.controller;
+package controller;
 
-import SIG.model.FileOperations;
-import SIG.model.ShowInvTabel;
-import SIG.model.ShowLineTabel;
-import SIG.model.sigHeader;
-import SIG.model.sigItem;
-import SIG.view.InvoiceFrame;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import java.util.ArrayList;
-import SIG.view.addInvoiceDialog;
-import SIG.view.addLineDialog;
+
+import Model.*;
+import view.InvoiceFrame;
+import view.addInvoiceDialog;
+import view.addLineDialog;
+
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+
 
 public class Controller implements ActionListener, ListSelectionListener {
 
@@ -46,11 +46,11 @@ public class Controller implements ActionListener, ListSelectionListener {
             case "Delete Line":
                 deleteLine();
                 break;
-
+                   
             case "createInvoice":
                 addInvOk();
                 break;
-
+                
             case "cancelInvoice":
                 cancelInvoice();
                 break;
@@ -59,8 +59,8 @@ public class Controller implements ActionListener, ListSelectionListener {
                 break;
             case "cancelLine":
                 cancelLine();
-                break;
-
+                break;  
+                
             case "Open File":
                 //create an obk from fileoperations and return a list of onvoices then updates the to tables
                 //the below line cause if the user wants to read the files after booting
@@ -72,20 +72,20 @@ public class Controller implements ActionListener, ListSelectionListener {
                 frame.setHeaderTabel(invoiceTable);
                 frame.getTableInvoiceHeader().setModel(invoiceTable);
                 frame.getHeaderTabel().fireTableDataChanged();
-
+           
                 break;
 
             case "Save File":
                 //create an obk from fileoperations and write the data to the files
                 FileOperations fileOperations1 = new FileOperations(frame);
 
-
+            
                 fileOperations1.saveFile(frame.getInvoices());
-
-
+            
+            
                 break;
 
-
+                
         }
     }
 
@@ -94,27 +94,27 @@ public class Controller implements ActionListener, ListSelectionListener {
         invDialog.setVisible(true);
 
     }
-    //get the selected invoice from the tabel and delete it then updates the tabel
+//get the selected invoice from the tabel and delete it then updates the tabel
     private void deleteInvoice() {
-        int row = frame.getTableInvoiceHeader().getSelectedRow();
+         int row = frame.getTableInvoiceHeader().getSelectedRow();
         if(row!= -1){
             frame.getInvoices().remove(row);
             frame.getHeaderTabel().fireTableDataChanged();
-
+            
         }
     }
-    //create obj dialoge of classaddLineDialoge and set it visible
+//create obj dialoge of classaddLineDialoge and set it visible
     private void newLine() {
         itemDialog = new addLineDialog(frame);
         itemDialog.setVisible(true);
-
+        
     }
-    //get the selected invoice from the header tabel then get the selected line from the items tabel
+//get the selected invoice from the header tabel then get the selected line from the items tabel
     //then delete the selected item then updates the items and invoices header
     private void deleteLine() {
         int invoiceSelected= frame.getTableInvoiceHeader().getSelectedRow();
-        int row = frame.getTableInvoiceLines().getSelectedRow();
-        //only delete if the user select an invoice from the header tabel then a item from items tabel
+          int row = frame.getTableInvoiceLines().getSelectedRow();
+          //only delete if the user select an invoice from the header tabel then a item from items tabel
         if((invoiceSelected!=-1) && (row!= -1)){
             sigHeader invoice = frame.getInvoices().get(invoiceSelected);
             invoice.getItems().remove(row);
@@ -122,18 +122,18 @@ public class Controller implements ActionListener, ListSelectionListener {
             ShowLineTabel line = new ShowLineTabel(invoice.getItems());
             frame.getTableInvoiceLines().setModel(line);
             line.fireTableDataChanged();
-        }
+    }
     }
 
 //create two arrays from sigHeader and sigItem then save them in the desired file
-
-    //get the invoice customer and date then create a new invoice from sigHeader class then update the tabel
+   
+//get the invoice customer and date then create a new invoice from sigHeader class then update the tabel
     public void addInvOk() {
-        String date= invDialog.getInvoiceDate().getText();
-        String customer = invDialog.getCustomerName().getText();
-        //get the total invoices number
-        int num= frame.getTotalInvNum();
-        num++;
+      String date= invDialog.getInvoiceDate().getText();
+      String customer = invDialog.getCustomerName().getText();
+      //get the total invoices number
+      int num= frame.getTotalInvNum();
+      num++;
         sigHeader newInvoice = new sigHeader(num,customer,date);
         frame.getInvoices().add(newInvoice);
         frame.getHeaderTabel().fireTableDataChanged();
@@ -141,34 +141,34 @@ public class Controller implements ActionListener, ListSelectionListener {
         invDialog.setVisible(false);
         invDialog.dispose();
         invDialog=null;
-
+        
     }
-    //get the invoice from by searching through its number
-    public sigHeader getInvoiceByNum(int num){
-        for(sigHeader inv: frame.getInvoices()){
-            if(num==inv.getNum()){
-                return inv;
-            }
+//get the invoice from by searching through its number
+public sigHeader getInvoiceByNum(int num){
+    for(sigHeader inv: frame.getInvoices()){
+        if(num==inv.getNum()){
+            return inv;
         }
+    } 
         return null;
-    }
+}
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    //close the addInvoiceDialoge
+//close the addInvoiceDialoge
     private void cancelInvoice() {
         invDialog.setVisible(false);
         invDialog.dispose();
         invDialog=null;
     }
-    /*add the item line data to the table and updates it  and add this line to its invoice
-        and also updates the header table by get the selected invoice from the header table
-        */
+/*add the item line data to the table and updates it  and add this line to its invoice
+    and also updates the header table by get the selected invoice from the header table
+    */
     private void createLine() {
-
-        int invoiceSelected= frame.getTableInvoiceHeader().getSelectedRow();
+        
+      int invoiceSelected= frame.getTableInvoiceHeader().getSelectedRow();
         if(invoiceSelected!=-1){
             sigHeader invoice = frame.getInvoices().get(invoiceSelected);
             String item= itemDialog.getItemName().getText();
@@ -187,9 +187,9 @@ public class Controller implements ActionListener, ListSelectionListener {
         itemDialog.setVisible(false);
         itemDialog.dispose();
         itemDialog=null;
-
+        
     }
-    //close the addLineDialoge
+//close the addLineDialoge
     private void cancelLine() {
         itemDialog.setVisible(false);
         itemDialog.dispose();
