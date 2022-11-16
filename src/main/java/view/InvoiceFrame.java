@@ -107,7 +107,7 @@ public class InvoiceFrame extends javax.swing.JFrame{
     private JTable tableInvoiceLines;
     // End of variables declaration
 private Controller controller = new Controller(this);
-
+private TableAction tableAction = new TableAction(this);
 
 
 
