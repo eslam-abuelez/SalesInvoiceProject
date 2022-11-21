@@ -4,7 +4,10 @@
 
 
 package SIG.model;
-
+/**
+ *
+ * @author ahmed
+ */
 public class sigItem {
     private sigHeader invoice;
     private String itemName;
