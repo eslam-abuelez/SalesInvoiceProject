@@ -64,7 +64,7 @@ public class Controller implements ActionListener, ListSelectionListener {
                 FileOperations fileOperations = new FileOperations(frame);
                 ArrayList<sigHeader> inv= fileOperations.readFile();
                 frame.setInvoices(inv);
-                ShowInvTable invoiceTable = new ShowInvTable(inv);
+                ShowInvTabel invoiceTable = new ShowInvTabel(inv);
                 frame.setHeaderTabel(invoiceTable);
                 frame.getTableInvoiceHeader().setModel(invoiceTable);
                 frame.getHeaderTabel().fireTableDataChanged();

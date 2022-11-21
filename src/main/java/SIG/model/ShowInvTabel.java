@@ -7,13 +7,16 @@ package SIG.model;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
+/**
+ *
+ * @author ahmed
+ */
+public class ShowInvTabel extends AbstractTableModel {
 
-public class ShowInvTable extends AbstractTableModel {
-
-    private String[] cols = {"Num", "Date", "Customer", "Total"};
+    private String[] colums = {"Num", "Date", "Customer", "Total"};
     private ArrayList<sigHeader> invoices;
 
-    public ShowInvTable(ArrayList<sigHeader> invoices) {
+    public ShowInvTabel(ArrayList<sigHeader> invoices) {
         this.invoices = invoices;
     }
 
@@ -24,7 +27,7 @@ public class ShowInvTable extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return cols.length;
+        return colums.length;
     }
 
     @Override
@@ -51,7 +54,7 @@ public class ShowInvTable extends AbstractTableModel {
 
     @Override
     public String getColumnName(int column) {
-        return cols[column];
+        return colums[column];
     }
 
 }
