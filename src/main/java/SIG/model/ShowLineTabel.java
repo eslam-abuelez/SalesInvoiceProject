@@ -2,7 +2,7 @@
 
 //model of item lines table 
 
-package Model;
+package SIG.model;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class ShowLineTabel extends AbstractTableModel {
 
-    private String[] colums = {"Num", "Item", "Unit Price", "Quantity", "Total"};
+    private String[] cols = {"Num", "Item", "Unit Price", "Quantity", "Total"};
     private ArrayList<sigItem> items;
 
     public ShowLineTabel(ArrayList<sigItem> items) {
@@ -24,7 +24,7 @@ public class ShowLineTabel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return colums.length;
+        return cols.length;
     }
 
     @Override
@@ -54,6 +54,6 @@ public class ShowLineTabel extends AbstractTableModel {
 
     @Override
     public String getColumnName(int column) {
-        return colums[column];
+        return cols[column];
     }
 }

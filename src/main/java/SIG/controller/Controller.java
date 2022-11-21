@@ -1,19 +1,15 @@
-package controller;
+package SIG.controller;
 
-
-
-import Model.*;
-import view.InvoiceFrame;
-import view.addInvoiceDialog;
-import view.addLineDialog;
+import SIG.model.*;
+import SIG.view.InvoiceFrame;
+import SIG.view.addInvoiceDialog;
+import SIG.view.addLineDialog;
 
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
-
 
 public class Controller implements ActionListener, ListSelectionListener {
 
@@ -68,7 +64,7 @@ public class Controller implements ActionListener, ListSelectionListener {
                 FileOperations fileOperations = new FileOperations(frame);
                 ArrayList<sigHeader> inv= fileOperations.readFile();
                 frame.setInvoices(inv);
-                ShowInvTabel invoiceTable = new ShowInvTabel(inv);
+                ShowInvTable invoiceTable = new ShowInvTable(inv);
                 frame.setHeaderTabel(invoiceTable);
                 frame.getTableInvoiceHeader().setModel(invoiceTable);
                 frame.getHeaderTabel().fireTableDataChanged();

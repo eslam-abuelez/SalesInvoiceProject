@@ -2,7 +2,7 @@
 
 
 //class of SigHeader which store in it the invoice item lines, customer name, invoice number and date
-package Model;
+package SIG.model;
 
 import java.util.ArrayList;
  

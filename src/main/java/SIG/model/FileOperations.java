@@ -1,8 +1,7 @@
 
-package Model;
+package SIG.model;
 
-import view.InvoiceFrame;
-import view.InvoiceFrame;
+import SIG.view.InvoiceFrame;
 
 import javax.swing.*;
 import java.io.File;
@@ -113,7 +112,7 @@ public class FileOperations {
                     sigHeader invoice = new sigHeader(num, customerName, date);
                     invArray.add(invoice);
                     frame.getInvoices().add(invoice);
-
+                   
                 }
                 /*split each element in itemLine arrays that has the invoices from items file
                     then dipose ',' and save each string in another array of strings
@@ -231,8 +230,8 @@ public class FileOperations {
             }
             }
             else{
-                System.out.println("Invalid File ");
-                 JOptionPane.showMessageDialog(frame, "Invalid File");
+                System.out.println("Wrong Lines File Format");
+                 JOptionPane.showMessageDialog(frame, "Wrong Lines File Format");   
             }
         }while(true);
        
